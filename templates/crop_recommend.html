@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            background-image: url('https://wallpapers.com/images/high/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.webp'); /* Background image */
+            background-size: cover;
+            animation: backgroundAnimation 15s infinite linear; 
+            -webkit-animation: backgroundAnimation 15s infinite linear;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent horizontal scrolling */
+            font-family: Georgia, sans-serif;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @-webkit-keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 40px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .transparent-button {
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .transparent-button:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background on hover */
+        }
+
+        .attribute-icon {
+            color: #666;
+            margin-right: 10px;
+        }
+
+        .bottom-text {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Recommendation</h1>
+        <form action="/crop-recommendation" method="POST"> <!-- Updated action and method -->
+            <div>
+                <i class="fas fa-tint attribute-icon"></i>
+                <input type="number" name="humidity" placeholder="Air Humidity (%)" min="0" max="100" required><br>
+            </div>
+            <div>
+                <i class="fas fa-thermometer-half attribute-icon"></i>
+                <input type="number" name="temperature" placeholder="Temperature (°C)" step="0.1" required><br>
+            </div>
+            <div>
+                <i class="fas fa-flask attribute-icon"></i>
+                <input type="number" name="ph" placeholder="Soil pH" step="0.1" required><br>
+            </div>
+            <div>
+                <i class="fas fa-cloud-showers-heavy attribute-icon"></i>
+                <input type="number" name="rainfall" placeholder="Rainfall (mm)" step="0.1" required><br>
+            </div>
+            <button type="submit" class="transparent-button">Get Recommendations</button>
+        </form>
+    </div>
+    <div class="bottom-text">
+        <h2>
+            THE  prediction is {{results}}
+         </h2>
+    </div>
+</body>
+</html>

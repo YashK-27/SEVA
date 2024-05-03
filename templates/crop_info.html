@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Information</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://wallpapers.com/images/high/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.webp'); /* Background image */
+            background-size: cover;
+            animation: backgroundAnimation 15s infinite linear; 
+            -webkit-animation: backgroundAnimation 15s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @-webkit-keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .transparent-button {
+            background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .transparent-button:hover {
+            background-color: rgba(0, 0, 0, 0.7); /* Darker transparent background on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Work in Progress</h1>
+        <p>We are currently working on gathering information about various crops. Please check back later for updates.</p>
+        <a href="{{ url_for('dashboard') }}" class="transparent-button">Continue Exploring</a>
+    </div>
+</body>
+</html>

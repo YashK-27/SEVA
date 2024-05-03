@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Farming Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Georgia', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: url('https://wallpapers.com/images/high/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.webp');
+            background-size: cover;
+            animation: backgroundAnimation 15s infinite linear;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @-webkit-keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Set minimum height to viewport height */
+            padding: 20px;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+            border-radius: 12px; /* Bigger border radius */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Lighter box shadow */
+            padding: 30px; /* Bigger padding */
+            width: 350px; /* Bigger width */
+            margin-bottom: 30px; /* Default margin */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px); /* Hover effect */
+        }
+
+        .card i {
+            font-size: 48px; /* Default icon size */
+            color: #9ccc65; /* Light green icon color */
+            margin-bottom: 20px; /* Default margin */
+        }
+
+        .card h2 {
+            margin-bottom: 10px; /* Default margin */
+            color: #333; /* Dark gray heading color */
+            font-size: 24px; /* Default font size */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .card p {
+            color: #666; /* Medium gray text color */
+            font-size: 16px; /* Default font size */
+            line-height: 1.6;
+        }
+
+        .crop-recommendation,
+        .crop-information {
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+
+        .disease-detection {
+            background-color: rgba(255, 255, 255, 0.5); 
+        }
+
+        #language-select {
+            margin-bottom: 20px;
+        }
+        a {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Inherits text color from surrounding elements */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+        </select>
+        <a href="{{ url_for('crop_recommendation') }}">
+            <div class="card crop-recommendation">
+                <i class="fas fa-leaf"></i>
+                <h2 class="english">Crop Recommendation</h2>
+                <h2 class="hindi" style="display: none;">फसल की सिफारिश</h2>
+                <p class="english">Get personalized crop recommendations based on weather and soil conditions.</p>
+                <p class="hindi" style="display: none;">मौसम और मिट्टी की स्थिति के आधार पर व्यक्तिगत फसल की सिफारिश प्राप्त करें।</p>
+            </div>
+        </a>   
+        <a href="{{ url_for('disease_detection') }}">     
+            <div class="card disease-detection">
+                <i class="fas fa-bug"></i>
+                <h2 class="english">Disease Detection</h2>
+                <h2 class="hindi" style="display: none;">रोग पहचान</h2>
+                <p class="english">Detect diseases in crops using image recognition technology.</p>
+                <p class="hindi" style="display: none;">छवि पहचान प्रौद्योगिकी का उपयोग करके फसलों में रोग पहचानें। </p>
+            </div>
+        </a>
+        <a href="{{ url_for('crop_info') }}">
+            <div class="card crop-information">
+                <i class="fas fa-info-circle"></i>
+                <h2 class="english">Crop Information</h2>
+                <h2 class="hindi" style="display: none;">फसल की जानकारी</h2>
+                <p class="english">Access detailed information about various crops including growth cycles, nutritional requirements, and more.</p>
+                <p class="hindi" style="display: none;">विभिन्न फसलों के विस्तृत जानकारी तक पहुँचें, जिसमें वृद्धि चक्र, पोषण आवश्यकताओं, और अधिक शामिल हैं। </p>
+            </div>
+        </a>
+    </div>
+    <script>
+        document.getElementById('language-select').addEventListener('change', function() {
+            var language = this.value;
+            var englishElements = document.querySelectorAll('.english');
+            var hindiElements = document.querySelectorAll('.hindi');
+
+            if (language === 'en') {
+                englishElements.forEach(function(element) {
+                    element.style.display = 'block';
+                });
+                hindiElements.forEach(function(element) {
+                    element.style.display = 'none';
+                });
+            } else if (language === 'hi') {
+                englishElements.forEach(function(element) {
+                    element.style.display = 'none';
+                });
+                hindiElements.forEach(function(element) {
+                    element.style.display = 'block';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

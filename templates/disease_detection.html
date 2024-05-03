@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Detection</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-image: url('https://wallpapers.com/images/high/japan-farm-anime-landscape-yvqut0t4ra7u0j6l.webp'); /* Background image */
+            background-size: cover;
+            animation: backgroundAnimation 15s infinite linear; 
+            -webkit-animation: backgroundAnimation 15s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        @-webkit-keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.5); /* Transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        input[type="file"] {
+            display: none; /* Hide file input */
+        }
+
+        .upload-btn {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .upload-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .upload-icon {
+            margin-right: 5px;
+        }
+
+        #uploaded-image {
+            max-width: 80%; /* Set maximum width for the image */
+            margin-top: 20px;
+            display: block; /* Ensure image is displayed as a block element */
+            margin-left: auto; /* Center the image horizontally */
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disease Detection</h1>
+        <!-- Modified the form action to match the Flask route -->
+        <form action="/disease-detection" method="POST" enctype="multipart/form-data">
+            <label for="file-upload" class="upload-btn"><i class="fas fa-upload upload-icon"></i>Upload Image</label>
+            <input type="file" id="file-upload" name="image" accept="image/*" required>
+            <p>Upload an image of the plant to detect diseases.</p>
+            <button type="submit" class="transparent-button">Detect Disease</button>
+        </form>                
+    </div>
+</body>
+</html>
